@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h1 class="text-center mb-4">Welcome to PwdSkills</h1>
+
+    <!-- Search Form -->
+    <form method="get" action="{% url 'home' %}" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search by ID, County, Education..." value="{{ request.GET.q }}">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    <!-- Profile List -->
+    <ul class="profile-list">
+        {% for profile in profiles %}
+        <li>
+            <strong>{{ profile.name }}</strong>
+            <p>County: {{ profile.county }}</p>
+            <p>SubCounty: {{ profile.subcounty }}</p>
+            <p>Ward: {{ profile.ward }}</p>
+            <p>Education: {{ profile.get_level_of_education_display }}</p>
+            <p>Skills: {{ profile.skills }}</p>
+        </li>
+        {% empty %}
+        <p>No profiles found.</p>
+        {% endfor %}
+    </ul>
+
+    <!-- Pagination Controls -->
+    {% if profiles.has_other_pages %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if profiles.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">First</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ profiles.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Previous</a>
+                </li>
+            {% endif %}
+
+            <li class="page-item disabled">
+                <span class="page-link">Page {{ profiles.number }} of {{ profiles.paginator.num_pages }}</span>
+            </li>
+
+            {% if profiles.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ profiles.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Next</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ profiles.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Last</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}

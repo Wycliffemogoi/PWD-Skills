@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <!-- Display Messages -->
+    {% if messages %}
+    <div id="message-container" class="alert alert-info mt-4">
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mt-5 mb-5">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="text-center">Create Your Profile</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_name" class="form-label">Name</label>
+                            {{ form.name }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_id_number" class="form-label">ID Number</label>
+                            {{ form.id_number }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_ncpwd_number" class="form-label">NCPWD Number</label>
+                            {{ form.ncpwd_number }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_phone_number" class="form-label">Phone Number</label>
+                            {{ form.phone_number }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_county" class="form-label">County</label>
+                            {{ form.county }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_subcounty" class="form-label">Subcounty</label>
+                            {{ form.subcounty }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_ward" class="form-label">Ward</label>
+                            {{ form.ward }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_level_of_education" class="form-label">Level of Education</label>
+                            {{ form.level_of_education }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_skills" class="form-label">Skills</label>
+                            {{ form.skills }}
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Save Profile</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript to Auto-Hide Messages -->
+<script>
+    setTimeout(function() {
+        let messageContainer = document.getElementById("message-container");
+        if (messageContainer) {
+            messageContainer.style.transition = "opacity 0.5s";
+            messageContainer.style.opacity = "0";
+            setTimeout(() => messageContainer.remove(), 500);
+        }
+    }, 3000); // Message disappears after 3 seconds
+</script>
+
+{% endblock %}

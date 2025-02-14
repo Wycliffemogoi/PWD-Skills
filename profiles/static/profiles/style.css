@@ -1,0 +1,109 @@
+/* Custom styles for PwdSkills */
+
+/* Body background */
+body {
+    background-color: #f8f9fa;
+}
+
+/* Navbar styling */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer styling */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+
+/* Form styling */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0b5ed7;
+}
+
+/* Profile list styling */
+.profile-list {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-list li {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-list li strong {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.profile-list li p {
+    margin: 5px 0;
+    color: #666;
+}
+
+/* Custom styles for the Create Profile Form */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0;
+}
+
+.form-control {
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+
+.btn-primary {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.1em;
+}
+
+/* Ensure the footer stays at the bottom of the page */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+
